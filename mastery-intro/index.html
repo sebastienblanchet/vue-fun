@@ -19,46 +19,16 @@
   <!--[if lt IE 7]>
   <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-<div class="nav-bar"></div>
+  <div class="nav-bar"></div>
 
-<div id="app">
-
-  <div class="product">
-
-    <div class="product-image">
-      <img :src="image" />
+  <div id="app">
+    <div class="cart">
+      <p>Cart({{ cart.length }})</p>
     </div>
-
-    <div class="product-info">
-      <h1>{{ product }}</h1>
-      <p v-if="inStock">In Stock</p>
-      <p v-else>Out of Stock</p>
-
-      <ul>
-        <li v-for="detail in details">{{ detail }}</li>
-      </ul>
-
-      <div v-for="variant in variants" :key="variant.variantId">
-        <!-- hover -->
-        <p @mouseover="updateProduct(variant.variantImage)">{{ variant.variantColor }}</p>
-      </div>
-
-      <!-- ng-click  -->
-      <button v-on:click="addToCart">Add to cart</button>
-      <button @click="removeFromCart">Remove from cart</button>
-
-
-      <div class="cart">
-        <p>Cart({{ cart }})</p>
-      </div>
-
-    </div>
-
+    <product :premium="premium" @add-to-cart="updateCart"></product>
   </div>
 
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
   <script src="https://unpkg.com/vue"></script>
   <script src="main.js"></script>
 
